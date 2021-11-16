@@ -1,0 +1,9 @@
+parameters:
+    paths:
+        - %currentWorkingDirectory%/src
+    excludes_analyse:
+        - *Test*
+        - *tests*
+    level: max
+    bootstrapFiles:
+        - vendor/codeception/codeception/autoload.php

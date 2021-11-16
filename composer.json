@@ -1,0 +1,48 @@
+{
+    "name": "tr33m4n/codeception-module-percy-environment",
+    "description": "Provides environment configuration for the Codeception Percy module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Doyle",
+            "email": "tr33m4n@googlemail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3",
+        "composer-plugin-api": "^2",
+        "composer/package-versions-deprecated": "^1.11.99",
+        "myclabs/php-enum": "^1.8",
+        "ondram/ci-detector": "^4.1",
+        "symfony/process": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "tr33m4n\\CodeceptionModulePercyEnvironment\\": "src/"
+        }
+    },
+    "require-dev": {
+        "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^1.1",
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "phpstan/phpstan": "^0.12.90",
+        "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.11.35",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "fix": "vendor/bin/rector process && vendor/bin/php-cs-fixer fix --diff",
+        "test:lint": "vendor/bin/rector process --dry-run && vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "test:static": "vendor/bin/phpstan analyse --no-interaction --no-progress && vendor/bin/phpcs --standard=PSR12 ./src",
+        "test:unit": "vendor/bin/phpunit",
+        "test": [
+            "@test:lint",
+            "@test:static",
+            "@test:unit"
+        ]
+    }
+}
