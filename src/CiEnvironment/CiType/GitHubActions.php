@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType;
 
-use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType;
-use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventDataProvider;
 use OndraM\CiDetector\Ci\GitHubActions as CiDetectorGitHubActions;
 use OndraM\CiDetector\Env;
+use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType;
+use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventDataProvider;
 
 class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
 {
@@ -19,8 +19,10 @@ class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
     /**
      * GitHub constructor.
      *
+     * phpcs:disable Generic.Files.LineLength
+     *
      * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventDataProvider $eventDataProvider
-     * @param \OndraM\CiDetector\Env                                                         $env
+     * @param \OndraM\CiDetector\Env                                                                   $env
      */
     public function __construct(
         EventDataProvider $eventDataProvider,

@@ -2,21 +2,19 @@
 
 declare(strict_types=1);
 
-namespace tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment;
-
-use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiEnvironment;
+namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
 class PercyEnvironment
 {
     /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiEnvironment
+     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment
      */
     private $ciEnvironment;
 
     /**
      * PercyEnvironment constructor.
      *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiEnvironment $ciEnvironment
+     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment $ciEnvironment
      */
     public function __construct(
         CiEnvironment $ciEnvironment

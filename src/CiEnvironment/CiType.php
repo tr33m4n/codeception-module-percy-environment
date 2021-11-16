@@ -6,6 +6,8 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment;
 
 use MyCLabs\Enum\Enum;
 
+// phpcs:disable PSR1.Methods.CamelCapsMethodName
+// @phpstan-ignore-next-line
 final class CiType extends Enum
 {
     public const TRAVIS = 'travis';

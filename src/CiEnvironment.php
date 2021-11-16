@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment;
+namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
-use tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment\PercyEnvironment;
+use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver;
 
 class CiEnvironment
 {
@@ -14,15 +14,15 @@ class CiEnvironment
     private $ciType;
 
     /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment\PercyEnvironment
+     * @var \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment
      */
     private $percyEnvironment;
 
     /**
      * CiEnvironment constructor.
      *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver      $ciTypeResolver
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment\PercyEnvironment $percyEnvironment
+     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver $ciTypeResolver
+     * @param \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment             $percyEnvironment
      */
     public function __construct(
         CiTypeResolver $ciTypeResolver,
