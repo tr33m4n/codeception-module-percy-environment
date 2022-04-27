@@ -14,8 +14,8 @@ class Travis extends CiDetectorTravis implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return isset($_ENV['TRAVIS_PULL_REQUEST']) && $_ENV['TRAVIS_PULL_REQUEST'] !== 'false'
-            ? $_ENV['TRAVIS_PULL_REQUEST']
+        return $this->env->get('TRAVIS_PULL_REQUEST') && $this->env->get('TRAVIS_PULL_REQUEST') !== 'false'
+            ? $this->env->get('TRAVIS_PULL_REQUEST')
             : null;
     }
 
@@ -32,6 +32,6 @@ class Travis extends CiDetectorTravis implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['TRAVIS_BUILD_NUMBER'] ?? null;
+        return $this->env->get('TRAVIS_BUILD_NUMBER') ?: null;
     }
 }

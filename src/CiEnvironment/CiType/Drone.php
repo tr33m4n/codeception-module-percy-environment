@@ -14,7 +14,7 @@ class Drone extends CiDetectorDrone implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['DRONE_PULL_REQUEST'] ?? null;
+        return $this->env->get('DRONE_PULL_REQUEST') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class Drone extends CiDetectorDrone implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['DRONE_BUILD_NUMBER'] ?? null;
+        return $this->env->get('DRONE_BUILD_NUMBER') ?: null;
     }
 }

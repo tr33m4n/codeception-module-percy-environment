@@ -14,8 +14,8 @@ class AwsCodeBuild extends CiDetectorAwsCodeBuild implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        if (strpos($_ENV['CODEBUILD_WEBHOOK_EVENT'] ?? '', 'PULL_REQUEST') !== false) {
-            return str_replace('pr/', '', $_ENV['CODEBUILD_SOURCE_VERSION'] ?? '');
+        if (strpos($this->env->get('CODEBUILD_WEBHOOK_EVENT') ?: '', 'PULL_REQUEST') !== false) {
+            return str_replace('pr/', '', $this->env->get('CODEBUILD_SOURCE_VERSION') ?: '');
         }
 
         return null;
@@ -34,6 +34,6 @@ class AwsCodeBuild extends CiDetectorAwsCodeBuild implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['CODEBUILD_BUILD_ID'] ?? null;
+        return $this->env->get('CODEBUILD_BUILD_ID') ?: null;
     }
 }

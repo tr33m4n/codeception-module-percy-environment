@@ -30,6 +30,6 @@ class TeamCity extends CiDetectorTeamCity implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['BUILD_NUMBER'] ?? null;
+        return $this->env->get('BUILD_NUMBER') ?: null;
     }
 }

@@ -14,7 +14,7 @@ class BitbucketPipelines extends CiDetectorBitbucketPipelines implements CiTypeI
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['BITBUCKET_PR_ID'] ?? null;
+        return $this->env->get('BITBUCKET_PR_ID') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class BitbucketPipelines extends CiDetectorBitbucketPipelines implements CiTypeI
      */
     public function getNonce(): ?string
     {
-        return $_ENV['BITBUCKET_BUILD_NUMBER'] ?? null;
+        return $this->env->get('BITBUCKET_BUILD_NUMBER') ?: null;
     }
 }

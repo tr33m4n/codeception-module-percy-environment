@@ -4,3 +4,4 @@
 /.php_cs.cache
 /Makefile
 /Brewfile
+/.php-cs-fixer.cache

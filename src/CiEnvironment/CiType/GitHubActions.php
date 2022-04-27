@@ -11,10 +11,7 @@ use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventD
 
 class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
 {
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventDataProvider
-     */
-    private $eventDataProvider;
+    private EventDataProvider $eventDataProvider;
 
     /**
      * GitHub constructor.
@@ -38,7 +35,12 @@ class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $this->eventDataProvider->get('pull_request.number');
+        $eventData = $this->eventDataProvider->get('pull_request.number');
+        if (!is_string($eventData)) {
+            return null;
+        }
+
+        return $eventData;
     }
 
     /**
@@ -46,8 +48,8 @@ class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return isset($_ENV['PERCY_GITHUB_ACTION'])
-            ? sprintf('%s/%s', (string) CiType::GITHUB_ACTIONS(), $_ENV['PERCY_GITHUB_ACTION'] ?? '')
+        return $this->env->get('PERCY_GITHUB_ACTION') !== false
+            ? sprintf('%s/%s', (string) CiType::GITHUB_ACTIONS(), $this->env->get('PERCY_GITHUB_ACTION'))
             : (string) CiType::GITHUB_ACTIONS();
     }
 
@@ -56,6 +58,6 @@ class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['GITHUB_RUN_ID'] ?? null;
+        return $this->env->get('GITHUB_RUN_ID') ?: null;
     }
 }

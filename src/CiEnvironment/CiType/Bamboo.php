@@ -14,7 +14,7 @@ class Bamboo extends CiDetectorBamboo implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['bamboo_repository_pr_key'] ?? null;
+        return $this->env->get('bamboo_repository_pr_key') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class Bamboo extends CiDetectorBamboo implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['bamboo_buildNumber'] ?? null;
+        return $this->env->get('bamboo_buildNumber') ?: null;
     }
 }

@@ -14,7 +14,7 @@ class Jenkins extends CiDetectorJenkins implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['CHANGE_ID'] ?? null;
+        return $this->env->get('CHANGE_ID') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class Jenkins extends CiDetectorJenkins implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['BUILD_NUMBER'] ?? null;
+        return $this->env->get('BUILD_NUMBER') ?: null;
     }
 }

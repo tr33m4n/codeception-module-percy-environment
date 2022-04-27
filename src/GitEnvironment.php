@@ -6,18 +6,13 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
 use CzProject\GitPhp\Commit;
 use CzProject\GitPhp\Git as GitApi;
+use CzProject\GitPhp\GitRepository;
 
 class GitEnvironment
 {
-    /**
-     * @var \CzProject\GitPhp\GitRepository
-     */
-    private $gitApi;
+    private GitRepository $gitRepository;
 
-    /**
-     * @var \CzProject\GitPhp\Commit|null
-     */
-    private $lastCommit;
+    private ?Commit $lastCommit = null;
 
     /**
      * GitEnvironment constructor.
@@ -29,13 +24,12 @@ class GitEnvironment
         GitApi $gitApi,
         string $gitRepoPath
     ) {
-        $this->gitApi = $gitApi->open($gitRepoPath);
+        $this->gitRepository = $gitApi->open($gitRepoPath);
     }
 
     /**
      * Get SHA
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string
      */
     public function getSha(): string
@@ -51,13 +45,12 @@ class GitEnvironment
      */
     public function getBranch(): string
     {
-        return $this->gitApi->getCurrentBranchName();
+        return $this->gitRepository->getCurrentBranchName();
     }
 
     /**
      * Get message
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string|null
      */
     public function getMessage(): ?string
@@ -68,7 +61,6 @@ class GitEnvironment
     /**
      * Get author name
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string|null
      */
     public function getAuthorName(): ?string
@@ -79,7 +71,6 @@ class GitEnvironment
     /**
      * Get author email
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string
      */
     public function getAuthorEmail(): string
@@ -90,7 +81,6 @@ class GitEnvironment
     /**
      * Get committed at
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string
      */
     public function getCommittedAt(): string
@@ -101,7 +91,6 @@ class GitEnvironment
     /**
      * Get committer name
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string|null
      */
     public function getCommitterName(): ?string
@@ -112,7 +101,6 @@ class GitEnvironment
     /**
      * Get committer email
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return string
      */
     public function getCommitterEmail(): string
@@ -123,7 +111,6 @@ class GitEnvironment
     /**
      * Get last commit
      *
-     * @throws \CzProject\GitPhp\GitException
      * @return \CzProject\GitPhp\Commit
      */
     private function getLastCommit(): Commit
@@ -132,6 +119,6 @@ class GitEnvironment
             return $this->lastCommit;
         }
 
-        return $this->lastCommit = $this->gitApi->getLastCommit();
+        return $this->lastCommit = $this->gitRepository->getLastCommit();
     }
 }

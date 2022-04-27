@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
+use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface;
 use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver;
 
 class CiEnvironment
 {
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface
-     */
-    private $ciType;
+    private CiTypeInterface $ciType;
 
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment
-     */
-    private $percyEnvironment;
+    private PercyEnvironment $percyEnvironment;
 
     /**
      * CiEnvironment constructor.

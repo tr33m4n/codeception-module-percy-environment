@@ -14,11 +14,11 @@ class Circle extends CiDetectorCircle implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        if (!isset($_ENV['CIRCLE_PULL_REQUEST'])) {
+        if (!$this->env->get('CIRCLE_PULL_REQUEST')) {
             return null;
         }
 
-        $ciPullRequestsParts = explode('/', $_ENV['CIRCLE_PULL_REQUEST']);
+        $ciPullRequestsParts = explode('/', $this->env->get('CIRCLE_PULL_REQUEST'));
         return end($ciPullRequestsParts);
     }
 
@@ -35,6 +35,6 @@ class Circle extends CiDetectorCircle implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['CIRCLE_WORKFLOW_ID'] ?? $_ENV['CIRCLE_BUILD_NUM'] ?? null;
+        return $this->env->get('CIRCLE_WORKFLOW_ID') ?: $this->env->get('CIRCLE_BUILD_NUM') ?: null;
     }
 }

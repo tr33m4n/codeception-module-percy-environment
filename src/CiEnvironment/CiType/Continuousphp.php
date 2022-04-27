@@ -14,7 +14,7 @@ class Continuousphp extends CiDetectorContinuousphp implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['CPHP_PR_ID'] ?? null;
+        return $this->env->get('CPHP_PR_ID') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class Continuousphp extends CiDetectorContinuousphp implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['CPHP_BUILD_ID'] ?? null;
+        return $this->env->get('CPHP_BUILD_ID') ?: null;
     }
 }

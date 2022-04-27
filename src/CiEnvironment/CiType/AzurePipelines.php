@@ -14,7 +14,9 @@ class AzurePipelines extends CiDetectorAzurePipelines implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['SYSTEM_PULLREQUEST_PULLREQUESTID'] ?? $_ENV['SYSTEM_PULLREQUEST_PULLREQUESTNUMBER'] ?? null;
+        return $this->env->get('SYSTEM_PULLREQUEST_PULLREQUESTID')
+            ?: $this->env->get('SYSTEM_PULLREQUEST_PULLREQUESTNUMBER')
+                ?: null;
     }
 
     /**
@@ -30,6 +32,6 @@ class AzurePipelines extends CiDetectorAzurePipelines implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['SYSTEM_JOBID'] ?? null;
+        return $this->env->get('SYSTEM_JOBID') ?: null;
     }
 }
