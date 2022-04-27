@@ -6,19 +6,6 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
 class PercyEnvironment
 {
-    private CiEnvironment $ciEnvironment;
-
-    /**
-     * PercyEnvironment constructor.
-     *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment $ciEnvironment
-     */
-    public function __construct(
-        CiEnvironment $ciEnvironment
-    ) {
-        $this->ciEnvironment = $ciEnvironment;
-    }
-
     /**
      * Get pull request
      *
@@ -76,7 +63,7 @@ class PercyEnvironment
      */
     public function getParallelNonce(): ?string
     {
-        return getenv('PERCY_PARALLEL_NONCE') ?: $this->ciEnvironment->getNonce();
+        return getenv('PERCY_PARALLEL_NONCE') ?: null;
     }
 
     /**

@@ -11,20 +11,15 @@ class CiEnvironment
 {
     private CiTypeInterface $ciType;
 
-    private PercyEnvironment $percyEnvironment;
-
     /**
      * CiEnvironment constructor.
      *
      * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver $ciTypeResolver
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment             $percyEnvironment
      */
     public function __construct(
-        CiTypeResolver $ciTypeResolver,
-        PercyEnvironment $percyEnvironment
+        CiTypeResolver $ciTypeResolver
     ) {
         $this->ciType = $ciTypeResolver->resolve();
-        $this->percyEnvironment = $percyEnvironment;
     }
 
     /**
@@ -34,7 +29,7 @@ class CiEnvironment
      */
     public function getPullRequest(): ?string
     {
-        return $this->percyEnvironment->getPullRequest() ?? $this->ciType->getPullRequest();
+        return $this->ciType->getPullRequest();
     }
 
     /**
@@ -44,7 +39,7 @@ class CiEnvironment
      */
     public function getBranch(): ?string
     {
-        return $this->percyEnvironment->getBranch() ?? $this->ciType->getBranch();
+        return $this->ciType->getBranch();
     }
 
     /**
@@ -54,7 +49,7 @@ class CiEnvironment
      */
     public function getCommit(): ?string
     {
-        return $this->percyEnvironment->getCommit() ?? $this->ciType->getCommit();
+        return $this->ciType->getCommit();
     }
 
     /**
