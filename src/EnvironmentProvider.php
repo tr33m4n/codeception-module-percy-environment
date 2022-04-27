@@ -8,7 +8,7 @@ use Codeception\Module\WebDriver;
 use Composer\InstalledVersions;
 use tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException;
 
-class EnvironmentProvider
+class EnvironmentProvider implements EnvironmentProviderInterface
 {
     private CiEnvironment $ciEnvironment;
 
@@ -44,9 +44,7 @@ class EnvironmentProvider
     }
 
     /**
-     * Get CI environment
-     *
-     * @return \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment
+     * @inheritDoc
      */
     public function getCiEnvironment(): CiEnvironment
     {
@@ -54,9 +52,7 @@ class EnvironmentProvider
     }
 
     /**
-     * Get Git environment
-     *
-     * @return \tr33m4n\CodeceptionModulePercyEnvironment\GitEnvironment
+     * @inheritDoc
      */
     public function getGitEnvironment(): GitEnvironment
     {
@@ -64,9 +60,7 @@ class EnvironmentProvider
     }
 
     /**
-     * Get percy environment
-     *
-     * @return \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment
+     * @inheritDoc
      */
     public function getPercyEnvironment(): PercyEnvironment
     {
@@ -74,10 +68,7 @@ class EnvironmentProvider
     }
 
     /**
-     * Get environment info
-     *
-     * @throws \tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException
-     * @return string
+     * @inheritDoc
      */
     public function getEnvironmentInfo(): string
     {
@@ -101,9 +92,7 @@ class EnvironmentProvider
     }
 
     /**
-     * Get client info
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getClientInfo(): string
     {
@@ -115,10 +104,7 @@ class EnvironmentProvider
     }
 
     /**
-     * Get user agent
-     *
-     * @throws \tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException
-     * @return string
+     * @inheritDoc
      */
     public function getUserAgent(): string
     {
