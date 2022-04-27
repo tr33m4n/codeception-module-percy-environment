@@ -14,7 +14,7 @@ class CodeShip extends CiDetectorCodeship implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['CI_PR_NUMBER'] ?? null;
+        return $this->env->get('CI_PR_NUMBER') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class CodeShip extends CiDetectorCodeship implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['CI_BUILD_NUMBER'] ?? $_ENV['CI_BUILD_ID'] ?? null;
+        return $this->env->get('CI_BUILD_NUMBER') ?: $this->env->get('CI_BUILD_ID') ?: null;
     }
 }

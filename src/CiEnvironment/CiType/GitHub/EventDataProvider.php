@@ -11,7 +11,7 @@ class EventDataProvider
     /**
      * @var null|array<string, mixed>
      */
-    private $gitHubEventData;
+    private ?array $gitHubEventData = null;
 
     /**
      * Get event data
@@ -57,12 +57,15 @@ class EventDataProvider
         }
 
         try {
-            $this->gitHubEventData = json_decode(
+            /** @var array<string, mixed> $eventData */
+            $eventData = json_decode(
                 file_get_contents($_ENV['GITHUB_EVENT_PATH']) ?: '[]',
                 true,
                 512,
                 JSON_THROW_ON_ERROR
             );
+
+            $this->gitHubEventData = $eventData;
         } catch (JsonException $jsonException) {
             $this->gitHubEventData = [];
         }

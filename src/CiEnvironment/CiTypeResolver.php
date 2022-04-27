@@ -10,15 +10,9 @@ use OndraM\CiDetector\Env as CiDetectorEnv;
 
 class CiTypeResolver
 {
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypePool
-     */
-    private $ciTypePool;
+    private CiTypePool $ciTypePool;
 
-    /**
-     * @var \OndraM\CiDetector\Env
-     */
-    private $ciDetectorEnv;
+    private CiDetectorEnv $ciDetectorEnv;
 
     /**
      * CiTypeResolver constructor.

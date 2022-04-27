@@ -14,7 +14,7 @@ class AppVeyor extends CiDetectorAppVeyor implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['APPVEYOR_PULL_REQUEST_NUMBER'] ?? null;
+        return $this->env->get('APPVEYOR_PULL_REQUEST_NUMBER') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class AppVeyor extends CiDetectorAppVeyor implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['APPVEYOR_BUILD_ID'] ?? null;
+        return $this->env->get('APPVEYOR_BUILD_ID') ?: null;
     }
 }

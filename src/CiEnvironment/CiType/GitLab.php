@@ -14,7 +14,7 @@ class GitLab extends CiDetectorGitLab implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['CI_MERGE_REQUEST_IID'] ?? $_ENV['CI_EXTERNAL_PULL_REQUEST_IID'] ?? null;
+        return $this->env->get('CI_MERGE_REQUEST_IID') ?: $this->env->get('CI_EXTERNAL_PULL_REQUEST_IID') ?: null;
     }
 
     /**
@@ -22,7 +22,7 @@ class GitLab extends CiDetectorGitLab implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return sprintf('%s/%s', (string) CiType::GITLAB(), $_ENV['CI_SERVER_VERSION'] ?? '');
+        return sprintf('%s/%s', (string) CiType::GITLAB(), $this->env->get('CI_SERVER_VERSION') ?: '');
     }
 
     /**
@@ -30,6 +30,6 @@ class GitLab extends CiDetectorGitLab implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['CI_PIPELINE_ID'] ?? null;
+        return $this->env->get('CI_PIPELINE_ID') ?: null;
     }
 }

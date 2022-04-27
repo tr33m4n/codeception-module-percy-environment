@@ -30,6 +30,6 @@ class Wercker extends CiDetectorWercker implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['WERCKER_MAIN_PIPELINE_STARTED'] ?? null;
+        return $this->env->get('WERCKER_MAIN_PIPELINE_STARTED') ?: null;
     }
 }

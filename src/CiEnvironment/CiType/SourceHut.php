@@ -30,6 +30,6 @@ class SourceHut extends CiDetectorSourceHut implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['JOB_ID'] ?? null;
+        return $this->env->get('JOB_ID') ?: null;
     }
 }

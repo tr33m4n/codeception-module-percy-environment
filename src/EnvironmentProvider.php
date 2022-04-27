@@ -6,33 +6,19 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
 use Codeception\Module\WebDriver;
 use Composer\InstalledVersions;
+use tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException;
 
 class EnvironmentProvider
 {
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment
-     */
-    private $ciEnvironment;
+    private CiEnvironment $ciEnvironment;
 
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\GitEnvironment
-     */
-    private $gitEnvironment;
+    private GitEnvironment $gitEnvironment;
 
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment
-     */
-    private $percyEnvironment;
+    private PercyEnvironment $percyEnvironment;
 
-    /**
-     * @var \Codeception\Module\WebDriver
-     */
-    private $webDriver;
+    private WebDriver $webDriver;
 
-    /**
-     * @var string
-     */
-    private $packageName;
+    private string $packageName;
 
     /**
      * Provider constructor.
@@ -90,10 +76,15 @@ class EnvironmentProvider
     /**
      * Get environment info
      *
+     * @throws \tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException
      * @return string
      */
     public function getEnvironmentInfo(): string
     {
+        if (null === $this->webDriver->webDriver) {
+            throw new EnvironmentException('Remote web driver is not available');
+        }
+
         $webDriverCapabilities = $this->webDriver->webDriver->getCapabilities();
 
         $environmentInfo[] = sprintf(
@@ -126,6 +117,7 @@ class EnvironmentProvider
     /**
      * Get user agent
      *
+     * @throws \tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException
      * @return string
      */
     public function getUserAgent(): string

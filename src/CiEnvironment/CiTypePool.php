@@ -12,7 +12,7 @@ class CiTypePool
     /**
      * @var array<string, \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface>
      */
-    private $ciTypes;
+    private array $ciTypes;
 
     /**
      * CiTypePool constructor.

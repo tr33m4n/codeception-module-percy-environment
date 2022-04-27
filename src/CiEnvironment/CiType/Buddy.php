@@ -14,7 +14,7 @@ class Buddy extends CiDetectorBuddy implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['BUDDY_EXECUTION_PULL_REQUEST_ID'] ?? null;
+        return $this->env->get('BUDDY_EXECUTION_PULL_REQUEST_ID') ?: null;
     }
 
     /**
@@ -30,6 +30,6 @@ class Buddy extends CiDetectorBuddy implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $_ENV['BUDDY_EXECUTION_ID'] ?? null;
+        return $this->env->get('BUDDY_EXECUTION_ID') ?: null;
     }
 }

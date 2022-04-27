@@ -6,10 +6,7 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
 class PercyEnvironment
 {
-    /**
-     * @var \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment
-     */
-    private $ciEnvironment;
+    private CiEnvironment $ciEnvironment;
 
     /**
      * PercyEnvironment constructor.
@@ -29,7 +26,7 @@ class PercyEnvironment
      */
     public function getPullRequest(): ?string
     {
-        return $_ENV['PERCY_PULL_REQUEST'] ?? null;
+        return getenv('PERCY_PULL_REQUEST') ?: null;
     }
 
     /**
@@ -39,7 +36,7 @@ class PercyEnvironment
      */
     public function getBranch(): ?string
     {
-        return $_ENV['PERCY_BRANCH'] ?? null;
+        return getenv('PERCY_BRANCH') ?: null;
     }
 
     /**
@@ -49,7 +46,7 @@ class PercyEnvironment
      */
     public function getCommit(): ?string
     {
-        return $_ENV['PERCY_COMMIT'] ?? null;
+        return getenv('PERCY_COMMIT') ?: null;
     }
 
     /**
@@ -59,7 +56,7 @@ class PercyEnvironment
      */
     public function getTargetCommit(): ?string
     {
-        return $_ENV['PERCY_TARGET_COMMIT'] ?? null;
+        return getenv('PERCY_TARGET_COMMIT') ?: null;
     }
 
     /**
@@ -69,7 +66,7 @@ class PercyEnvironment
      */
     public function getTargetBranch(): ?string
     {
-        return $_ENV['PERCY_TARGET_BRANCH'] ?? null;
+        return getenv('PERCY_TARGET_BRANCH') ?: null;
     }
 
     /**
@@ -79,7 +76,7 @@ class PercyEnvironment
      */
     public function getParallelNonce(): ?string
     {
-        return $_ENV['PERCY_PARALLEL_NONCE'] ?? $this->ciEnvironment->getNonce();
+        return getenv('PERCY_PARALLEL_NONCE') ?: $this->ciEnvironment->getNonce();
     }
 
     /**
@@ -89,8 +86,8 @@ class PercyEnvironment
      */
     public function getParallelTotal(): int
     {
-        if (isset($_ENV['PERCY_PARALLEL_TOTAL']) && is_numeric($_ENV['PERCY_PARALLEL_TOTAL'])) {
-            return (int) $_ENV['PERCY_PARALLEL_TOTAL'];
+        if (is_numeric(getenv('PERCY_PARALLEL_TOTAL'))) {
+            return (int) getenv('PERCY_PARALLEL_TOTAL');
         }
 
         return 0;
@@ -103,6 +100,6 @@ class PercyEnvironment
      */
     public function getPartial(): bool
     {
-        return !!$_ENV['PERCY_PARTIAL_BUILD'] && $_ENV['PERCY_PARTIAL_BUILD'] !== '0';
+        return getenv('PERCY_PARTIAL_BUILD') && getenv('PERCY_PARTIAL_BUILD') !== '0';
     }
 }
