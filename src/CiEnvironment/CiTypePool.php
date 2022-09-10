@@ -29,8 +29,6 @@ class CiTypePool
      * Get CI type
      *
      * @throws \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\Exception\InvalidCiException
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType $ciType
-     * @return \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface
      */
     public function getCiType(CiType $ciType): CiTypeInterface
     {

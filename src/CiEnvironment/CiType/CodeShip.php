@@ -30,6 +30,6 @@ class CodeShip extends CiDetectorCodeship implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $this->env->get('CI_BUILD_NUMBER') ?: $this->env->get('CI_BUILD_ID') ?: null;
+        return ($this->env->get('CI_BUILD_NUMBER') ?: $this->env->get('CI_BUILD_ID')) ?: null;
     }
 }

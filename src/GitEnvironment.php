@@ -16,9 +16,6 @@ class GitEnvironment
 
     /**
      * GitEnvironment constructor.
-     *
-     * @param \CzProject\GitPhp\Git $gitApi
-     * @param string                $gitRepoPath
      */
     public function __construct(
         GitApi $gitApi,
@@ -29,8 +26,6 @@ class GitEnvironment
 
     /**
      * Get SHA
-     *
-     * @return string
      */
     public function getSha(): string
     {
@@ -41,7 +36,6 @@ class GitEnvironment
      * Get branch
      *
      * @throws \CzProject\GitPhp\GitException
-     * @return string
      */
     public function getBranch(): string
     {
@@ -50,8 +44,6 @@ class GitEnvironment
 
     /**
      * Get message
-     *
-     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -60,8 +52,6 @@ class GitEnvironment
 
     /**
      * Get author name
-     *
-     * @return string|null
      */
     public function getAuthorName(): ?string
     {
@@ -70,8 +60,6 @@ class GitEnvironment
 
     /**
      * Get author email
-     *
-     * @return string
      */
     public function getAuthorEmail(): string
     {
@@ -80,8 +68,6 @@ class GitEnvironment
 
     /**
      * Get committed at
-     *
-     * @return string
      */
     public function getCommittedAt(): string
     {
@@ -90,8 +76,6 @@ class GitEnvironment
 
     /**
      * Get committer name
-     *
-     * @return string|null
      */
     public function getCommitterName(): ?string
     {
@@ -100,8 +84,6 @@ class GitEnvironment
 
     /**
      * Get committer email
-     *
-     * @return string
      */
     public function getCommitterEmail(): string
     {
@@ -110,8 +92,6 @@ class GitEnvironment
 
     /**
      * Get last commit
-     *
-     * @return \CzProject\GitPhp\Commit
      */
     private function getLastCommit(): Commit
     {

@@ -16,7 +16,6 @@ class EventDataProvider
     /**
      * Get event data
      *
-     * @param string $path
      * @return mixed|null|mixed[]
      */
     public function get(string $path)

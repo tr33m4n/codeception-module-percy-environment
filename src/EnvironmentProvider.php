@@ -22,12 +22,6 @@ class EnvironmentProvider implements EnvironmentProviderInterface
 
     /**
      * Provider constructor.
-     *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment    $ciEnvironment
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\GitEnvironment   $gitEnvironment
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\PercyEnvironment $percyEnvironment
-     * @param \Codeception\Module\WebDriver                               $webDriver
-     * @param string                                                      $packageName
      */
     public function __construct(
         CiEnvironment $ciEnvironment,

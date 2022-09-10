@@ -35,6 +35,6 @@ class Circle extends CiDetectorCircle implements CiTypeInterface
      */
     public function getNonce(): ?string
     {
-        return $this->env->get('CIRCLE_WORKFLOW_ID') ?: $this->env->get('CIRCLE_BUILD_NUM') ?: null;
+        return ($this->env->get('CIRCLE_WORKFLOW_ID') ?: $this->env->get('CIRCLE_BUILD_NUM')) ?: null;
     }
 }
