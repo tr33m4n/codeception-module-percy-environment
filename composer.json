@@ -14,7 +14,7 @@
         "ext-json": "*",
         "composer-plugin-api": "^2",
         "composer-runtime-api": "^2",
-        "codeception/module-webdriver": "^2.0",
+        "codeception/module-webdriver": "^2.0||^3.0",
         "czproject/git-php": "^4.0",
         "myclabs/php-enum": "^1.8",
         "ondram/ci-detector": "^4.1"
