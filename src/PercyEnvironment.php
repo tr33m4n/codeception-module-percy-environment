@@ -8,8 +8,6 @@ class PercyEnvironment
 {
     /**
      * Get pull request
-     *
-     * @return string|null
      */
     public function getPullRequest(): ?string
     {
@@ -18,8 +16,6 @@ class PercyEnvironment
 
     /**
      * Get branch
-     *
-     * @return string|null
      */
     public function getBranch(): ?string
     {
@@ -28,8 +24,6 @@ class PercyEnvironment
 
     /**
      * Get commit
-     *
-     * @return string|null
      */
     public function getCommit(): ?string
     {
@@ -38,8 +32,6 @@ class PercyEnvironment
 
     /**
      * Get target commit
-     *
-     * @return string|null
      */
     public function getTargetCommit(): ?string
     {
@@ -48,8 +40,6 @@ class PercyEnvironment
 
     /**
      * Get target branch
-     *
-     * @return string|null
      */
     public function getTargetBranch(): ?string
     {
@@ -58,8 +48,6 @@ class PercyEnvironment
 
     /**
      * Get parallel nonce
-     *
-     * @return string|null
      */
     public function getParallelNonce(): ?string
     {
@@ -68,8 +56,6 @@ class PercyEnvironment
 
     /**
      * Get parallel total
-     *
-     * @return int
      */
     public function getParallelTotal(): int
     {
@@ -82,8 +68,6 @@ class PercyEnvironment
 
     /**
      * Get partial
-     *
-     * @return bool
      */
     public function getPartial(): bool
     {

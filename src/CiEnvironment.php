@@ -13,8 +13,6 @@ class CiEnvironment
 
     /**
      * CiEnvironment constructor.
-     *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver $ciTypeResolver
      */
     public function __construct(
         CiTypeResolver $ciTypeResolver
@@ -24,8 +22,6 @@ class CiEnvironment
 
     /**
      * Get pull request
-     *
-     * @return string|null
      */
     public function getPullRequest(): ?string
     {
@@ -34,28 +30,22 @@ class CiEnvironment
 
     /**
      * Get branch
-     *
-     * @return string|null
      */
-    public function getBranch(): ?string
+    public function getBranch(): string
     {
         return $this->ciType->getBranch();
     }
 
     /**
      * Get commit
-     *
-     * @return string|null
      */
-    public function getCommit(): ?string
+    public function getCommit(): string
     {
         return $this->ciType->getCommit();
     }
 
     /**
      * Get slug
-     *
-     * @return string
      */
     public function getSlug(): string
     {
@@ -64,8 +54,6 @@ class CiEnvironment
 
     /**
      * Get nonce
-     *
-     * @return string|null
      */
     public function getNonce(): ?string
     {

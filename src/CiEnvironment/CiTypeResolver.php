@@ -16,9 +16,6 @@ class CiTypeResolver
 
     /**
      * CiTypeResolver constructor.
-     *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypePool $ciTypePool
-     * @param \OndraM\CiDetector\Env                                    $ciDetectorEnv
      */
     public function __construct(
         CiTypePool $ciTypePool,
@@ -30,8 +27,6 @@ class CiTypeResolver
 
     /**
      * Resolve CI type
-     *
-     * @return \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface
      */
     public function resolve(): CiTypeInterface
     {

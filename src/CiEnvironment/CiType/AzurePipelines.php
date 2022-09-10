@@ -14,8 +14,7 @@ class AzurePipelines extends CiDetectorAzurePipelines implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $this->env->get('SYSTEM_PULLREQUEST_PULLREQUESTID')
-            ?: $this->env->get('SYSTEM_PULLREQUEST_PULLREQUESTNUMBER')
+        return ($this->env->get('SYSTEM_PULLREQUEST_PULLREQUESTID') ?: $this->env->get('SYSTEM_PULLREQUEST_PULLREQUESTNUMBER'))
                 ?: null;
     }
 

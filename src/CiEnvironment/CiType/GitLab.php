@@ -14,7 +14,7 @@ class GitLab extends CiDetectorGitLab implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        return $this->env->get('CI_MERGE_REQUEST_IID') ?: $this->env->get('CI_EXTERNAL_PULL_REQUEST_IID') ?: null;
+        return ($this->env->get('CI_MERGE_REQUEST_IID') ?: $this->env->get('CI_EXTERNAL_PULL_REQUEST_IID')) ?: null;
     }
 
     /**
