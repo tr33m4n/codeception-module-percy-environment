@@ -6,6 +6,8 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment;
 
 use Codeception\Module\WebDriver;
 use Composer\InstalledVersions;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Facebook\WebDriver\WebDriverCapabilities;
 use tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException;
 
 class EnvironmentProvider implements EnvironmentProviderInterface
@@ -66,11 +68,15 @@ class EnvironmentProvider implements EnvironmentProviderInterface
      */
     public function getEnvironmentInfo(): string
     {
-        if (null === $this->webDriver->webDriver) {
+        $remoteWebDriver = $this->webDriver->webDriver;
+        if (!$remoteWebDriver instanceof RemoteWebDriver) {
             throw new EnvironmentException('Remote web driver is not available');
         }
 
-        $webDriverCapabilities = $this->webDriver->webDriver->getCapabilities();
+        $webDriverCapabilities = $remoteWebDriver->getCapabilities();
+        if (!$webDriverCapabilities instanceof WebDriverCapabilities) {
+            throw new EnvironmentException('Unable to get remote web driver capabilities');
+        }
 
         $environmentInfo[] = sprintf(
             'codeception-php; %s; %s/%s',
