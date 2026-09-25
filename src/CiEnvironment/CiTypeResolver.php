@@ -8,21 +8,15 @@ use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterfa
 use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\Unknown;
 use OndraM\CiDetector\Env as CiDetectorEnv;
 
-class CiTypeResolver
+readonly class CiTypeResolver
 {
-    private CiTypePool $ciTypePool;
-
-    private CiDetectorEnv $ciDetectorEnv;
-
     /**
      * CiTypeResolver constructor.
      */
     public function __construct(
-        CiTypePool $ciTypePool,
-        CiDetectorEnv $ciDetectorEnv
+        private CiTypePool $ciTypePool,
+        private CiDetectorEnv $ciDetectorEnv
     ) {
-        $this->ciTypePool = $ciTypePool;
-        $this->ciDetectorEnv = $ciDetectorEnv;
     }
 
     /**

@@ -24,7 +24,7 @@ class Travis extends CiDetectorTravis implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::TRAVIS();
+        return CiType::TRAVIS->value;
     }
 
     /**

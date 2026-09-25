@@ -22,7 +22,7 @@ class AppVeyor extends CiDetectorAppVeyor implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::APPVEYOR();
+        return CiType::APPVEYOR->value;
     }
 
     /**

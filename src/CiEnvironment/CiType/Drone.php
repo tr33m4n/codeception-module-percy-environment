@@ -22,7 +22,7 @@ class Drone extends CiDetectorDrone implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::DRONE();
+        return CiType::DRONE->value;
     }
 
     /**

@@ -7,22 +7,16 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment;
 use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface;
 use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\Exception\InvalidCiException;
 
-class CiTypePool
+readonly class CiTypePool
 {
-    /**
-     * @var array<string, \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface>
-     */
-    private array $ciTypes;
-
     /**
      * CiTypePool constructor.
      *
      * @param array<string, \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface> $ciTypes
      */
     public function __construct(
-        array $ciTypes = []
+        private array $ciTypes = []
     ) {
-        $this->ciTypes = $ciTypes;
     }
 
     /**
@@ -32,11 +26,11 @@ class CiTypePool
      */
     public function getCiType(CiType $ciType): CiTypeInterface
     {
-        if (!array_key_exists((string) $ciType, $this->ciTypes)) {
-            throw new InvalidCiException(sprintf('"%s" is not a valid CI type', (string) $ciType));
+        if (!array_key_exists($ciType->value, $this->ciTypes)) {
+            throw new InvalidCiException(sprintf('"%s" is not a valid CI type', $ciType->value));
         }
 
-        return $this->ciTypes[(string) $ciType];
+        return $this->ciTypes[$ciType->value];
     }
 
     /**

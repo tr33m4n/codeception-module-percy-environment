@@ -22,7 +22,7 @@ class BitbucketPipelines extends CiDetectorBitbucketPipelines implements CiTypeI
      */
     public function getSlug(): string
     {
-        return (string) CiType::BITBUCKET_PIPELINES();
+        return CiType::BITBUCKET_PIPELINES->value;
     }
 
     /**

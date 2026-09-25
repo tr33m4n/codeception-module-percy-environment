@@ -10,33 +10,18 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverCapabilities;
 use tr33m4n\CodeceptionModulePercyEnvironment\Exception\EnvironmentException;
 
-class EnvironmentProvider implements EnvironmentProviderInterface
+readonly class EnvironmentProvider implements EnvironmentProviderInterface
 {
-    private CiEnvironment $ciEnvironment;
-
-    private GitEnvironment $gitEnvironment;
-
-    private PercyEnvironment $percyEnvironment;
-
-    private WebDriver $webDriver;
-
-    private string $packageName;
-
     /**
      * Provider constructor.
      */
     public function __construct(
-        CiEnvironment $ciEnvironment,
-        GitEnvironment $gitEnvironment,
-        PercyEnvironment $percyEnvironment,
-        WebDriver $webDriver,
-        string $packageName
+        private CiEnvironment $ciEnvironment,
+        private GitEnvironment $gitEnvironment,
+        private PercyEnvironment $percyEnvironment,
+        private WebDriver $webDriver,
+        private string $packageName
     ) {
-        $this->ciEnvironment = $ciEnvironment;
-        $this->gitEnvironment = $gitEnvironment;
-        $this->percyEnvironment = $percyEnvironment;
-        $this->webDriver = $webDriver;
-        $this->packageName = $packageName;
     }
 
     /**
@@ -98,7 +83,7 @@ class EnvironmentProvider implements EnvironmentProviderInterface
     {
         return sprintf(
             '%s/%s',
-            ltrim(strstr($this->packageName, '/') ?: '', '/'),
+            ltrim(str_contains($this->packageName, '/') ?: '', '/'),
             InstalledVersions::getVersion($this->packageName)
         );
     }

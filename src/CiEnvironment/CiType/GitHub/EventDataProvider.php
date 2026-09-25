@@ -18,11 +18,11 @@ class EventDataProvider
      *
      * @return mixed|null|mixed[]
      */
-    public function get(string $path)
+    public function get(string $path): mixed
     {
         $this->populateEventData();
 
-        if (array_key_exists($path, $this->gitHubEventData ?? []) || strpos($path, '.') === false) {
+        if (array_key_exists($path, $this->gitHubEventData ?? []) || !str_contains($path, '.')) {
             return $this->gitHubEventData[$path] ?? null;
         }
 
@@ -49,7 +49,8 @@ class EventDataProvider
             return;
         }
 
-        if (!isset($_ENV['GITHUB_EVENT_PATH']) || !is_file($_ENV['GITHUB_EVENT_PATH'])) {
+        $githubEventPath = $_ENV['GITHUB_EVENT_PATH'] ?? null;
+        if (!is_string($githubEventPath) || !is_file($githubEventPath)) {
             $this->gitHubEventData = [];
 
             return;
@@ -58,14 +59,14 @@ class EventDataProvider
         try {
             /** @var array<string, mixed> $eventData */
             $eventData = json_decode(
-                file_get_contents($_ENV['GITHUB_EVENT_PATH']) ?: '[]',
+                file_get_contents($githubEventPath) ?: '[]',
                 true,
                 512,
                 JSON_THROW_ON_ERROR
             );
 
             $this->gitHubEventData = $eventData;
-        } catch (JsonException $jsonException) {
+        } catch (JsonException) {
             $this->gitHubEventData = [];
         }
     }

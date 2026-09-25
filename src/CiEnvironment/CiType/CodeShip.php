@@ -22,7 +22,7 @@ class CodeShip extends CiDetectorCodeship implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::CODESHIP();
+        return CiType::CODESHIP->value;
     }
 
     /**

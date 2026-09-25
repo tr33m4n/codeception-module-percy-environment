@@ -11,22 +11,15 @@ use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventD
 
 class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
 {
-    private EventDataProvider $eventDataProvider;
-
     /**
      * GitHub constructor.
      *
      * phpcs:disable Generic.Files.LineLength
-     *
-     * @param \tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\GitHub\EventDataProvider $eventDataProvider
-     * @param \OndraM\CiDetector\Env                                                                   $env
      */
     public function __construct(
-        EventDataProvider $eventDataProvider,
+        private readonly EventDataProvider $eventDataProvider,
         Env $env
     ) {
-        $this->eventDataProvider = $eventDataProvider;
-
         parent::__construct($env);
     }
 
@@ -49,8 +42,8 @@ class GitHubActions extends CiDetectorGitHubActions implements CiTypeInterface
     public function getSlug(): string
     {
         return $this->env->get('PERCY_GITHUB_ACTION') !== false
-            ? sprintf('%s/%s', (string) CiType::GITHUB_ACTIONS(), $this->env->get('PERCY_GITHUB_ACTION'))
-            : (string) CiType::GITHUB_ACTIONS();
+            ? sprintf('%s/%s', (string) CiType::GITHUB_ACTIONS, $this->env->get('PERCY_GITHUB_ACTION'))
+            : CiType::GITHUB_ACTIONS->value;
     }
 
     /**

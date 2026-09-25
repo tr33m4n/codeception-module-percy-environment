@@ -22,7 +22,7 @@ class TeamCity extends CiDetectorTeamCity implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::TEAMCITY();
+        return CiType::TEAMCITY->value;
     }
 
     /**

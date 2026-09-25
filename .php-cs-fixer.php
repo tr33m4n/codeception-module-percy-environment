@@ -29,6 +29,7 @@ return (new PhpCsFixer\Config)->registerCustomFixers([new ForceFQCNFixer()])
         'cast_spaces' => true,
         'trailing_comma_in_multiline' => false,
         'no_unused_imports' => true,
-        'AdamWojs/phpdoc_force_fqcn_fixer' => true
+        'AdamWojs/phpdoc_force_fqcn_fixer' => true,
+        'multiline_promoted_properties' => true
     ])
     ->setFinder($finder);

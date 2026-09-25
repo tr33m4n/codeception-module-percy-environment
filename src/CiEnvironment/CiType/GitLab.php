@@ -22,7 +22,7 @@ class GitLab extends CiDetectorGitLab implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return sprintf('%s/%s', (string) CiType::GITLAB(), $this->env->get('CI_SERVER_VERSION') ?: '');
+        return sprintf('%s/%s', CiType::GITLAB->value, $this->env->get('CI_SERVER_VERSION') ?: '');
     }
 
     /**

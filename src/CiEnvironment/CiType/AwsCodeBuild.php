@@ -14,7 +14,7 @@ class AwsCodeBuild extends CiDetectorAwsCodeBuild implements CiTypeInterface
      */
     public function getPullRequest(): ?string
     {
-        if (strpos($this->env->get('CODEBUILD_WEBHOOK_EVENT') ?: '', 'PULL_REQUEST') !== false) {
+        if (str_contains($this->env->get('CODEBUILD_WEBHOOK_EVENT') ?: '', 'PULL_REQUEST')) {
             return str_replace('pr/', '', $this->env->get('CODEBUILD_SOURCE_VERSION') ?: '');
         }
 
@@ -26,7 +26,7 @@ class AwsCodeBuild extends CiDetectorAwsCodeBuild implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::AWS_CODEBUILD();
+        return CiType::AWS_CODEBUILD->value;
     }
 
     /**

@@ -22,7 +22,7 @@ class Wercker extends CiDetectorWercker implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::WERCKER();
+        return CiType::WERCKER->value;
     }
 
     /**
