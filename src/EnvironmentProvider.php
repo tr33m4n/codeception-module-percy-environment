@@ -83,7 +83,7 @@ readonly class EnvironmentProvider implements EnvironmentProviderInterface
     {
         return sprintf(
             '%s/%s',
-            ltrim(str_contains($this->packageName, '/') ?: '', '/'),
+            ltrim(strstr($this->packageName, '/') ?: '', '/'),
             InstalledVersions::getVersion($this->packageName)
         );
     }
