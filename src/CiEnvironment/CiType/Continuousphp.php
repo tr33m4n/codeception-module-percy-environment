@@ -22,7 +22,7 @@ class Continuousphp extends CiDetectorContinuousphp implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::CONTINUOUSPHP();
+        return CiType::CONTINUOUSPHP->value;
     }
 
     /**

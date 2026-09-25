@@ -22,7 +22,7 @@ class Buddy extends CiDetectorBuddy implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::BUDDY();
+        return CiType::BUDDY->value;
     }
 
     /**

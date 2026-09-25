@@ -22,7 +22,7 @@ class Jenkins extends CiDetectorJenkins implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::JENKINS();
+        return CiType::JENKINS->value;
     }
 
     /**

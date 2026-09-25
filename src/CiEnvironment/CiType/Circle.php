@@ -27,7 +27,7 @@ class Circle extends CiDetectorCircle implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::CIRCLE();
+        return CiType::CIRCLE->value;
     }
 
     /**

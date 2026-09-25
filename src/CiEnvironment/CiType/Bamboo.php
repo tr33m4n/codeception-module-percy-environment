@@ -22,7 +22,7 @@ class Bamboo extends CiDetectorBamboo implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::BAMBOO();
+        return CiType::BAMBOO->value;
     }
 
     /**

@@ -23,7 +23,7 @@ class Unknown implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::UNKNOWN();
+        return CiType::UNKNOWN->value;
     }
 
     /**

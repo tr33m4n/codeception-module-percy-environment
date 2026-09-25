@@ -25,7 +25,7 @@ class AzurePipelines extends CiDetectorAzurePipelines implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::AZURE_PIPELINES();
+        return CiType::AZURE_PIPELINES->value;
     }
 
     /**

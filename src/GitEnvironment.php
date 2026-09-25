@@ -10,7 +10,7 @@ use CzProject\GitPhp\GitRepository;
 
 class GitEnvironment
 {
-    private GitRepository $gitRepository;
+    private readonly GitRepository $gitRepository;
 
     private ?Commit $lastCommit = null;
 
@@ -95,7 +95,7 @@ class GitEnvironment
      */
     private function getLastCommit(): Commit
     {
-        if (null !== $this->lastCommit) {
+        if ($this->lastCommit instanceof Commit) {
             return $this->lastCommit;
         }
 

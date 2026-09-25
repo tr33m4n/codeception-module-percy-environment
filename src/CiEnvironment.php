@@ -7,7 +7,7 @@ namespace tr33m4n\CodeceptionModulePercyEnvironment;
 use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiType\CiTypeInterface;
 use tr33m4n\CodeceptionModulePercyEnvironment\CiEnvironment\CiTypeResolver;
 
-class CiEnvironment
+readonly class CiEnvironment
 {
     private CiTypeInterface $ciType;
 

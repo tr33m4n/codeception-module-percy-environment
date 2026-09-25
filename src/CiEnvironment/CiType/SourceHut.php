@@ -22,7 +22,7 @@ class SourceHut extends CiDetectorSourceHut implements CiTypeInterface
      */
     public function getSlug(): string
     {
-        return (string) CiType::SOURCEHUT();
+        return CiType::SOURCEHUT->value;
     }
 
     /**
