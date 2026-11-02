@@ -28,7 +28,7 @@
         "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.95",
         "phpstan/phpstan": "^2.2",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^13.4",
         "rector/rector": "^2.6",
         "squizlabs/php_codesniffer": "^4.0"
     },
